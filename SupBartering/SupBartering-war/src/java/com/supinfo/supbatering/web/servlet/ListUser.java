@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.supinfo.supbatering.web;
+package com.supinfo.supbatering.web.servlet;
 
 import com.supinfo.supbartering.ejb.entity.UserEntity;
 import com.supinfo.supbartering.ejb.facade.UserEntityFacade;
