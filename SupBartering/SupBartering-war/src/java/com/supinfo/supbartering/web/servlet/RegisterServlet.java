@@ -34,7 +34,8 @@ public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //TODO register page
-        response.getWriter().print("register test");
+        //response.getWriter().print("register test");
+        request.getRequestDispatcher("jsp/register.jsp").forward(request, response);
     }
 
     /**
