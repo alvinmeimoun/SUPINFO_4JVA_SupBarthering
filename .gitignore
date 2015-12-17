@@ -6,7 +6,7 @@ dist/
 nbdist/
 nbactions.xml
 .nb-gradle/
-
+private.properties
 
 *.class
 
