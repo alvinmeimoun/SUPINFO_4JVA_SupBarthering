@@ -12,6 +12,10 @@
         <servlet-name>EditProfileServlet</servlet-name>
         <url-pattern>/myprofile</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutServlet</servlet-name>
+        <url-pattern>/logout</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
@@ -33,6 +37,10 @@
         <servlet-name>EditProfileServlet</servlet-name>
         <servlet-class>com.supinfo.supbartering.web.servlet.EditProfileServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LogoutServlet</servlet-name>
+        <servlet-class>com.supinfo.supbartering.web.servlet.LogoutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/register</url-pattern>
@@ -49,6 +57,7 @@
     <filter-mapping>
         <filter-name>AuthCheckerFilter</filter-name>
         <servlet-name>EditProfileServlet</servlet-name>
+        <servlet-name>LogoutServlet</servlet-name>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AuthManagerFilter</filter-name>
