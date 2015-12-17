@@ -5,22 +5,14 @@
  */
 package com.supinfo.supbartering.web.servlet;
 
-import com.supinfo.supbartering.ejb.entity.UserEntity;
-import com.supinfo.supbartering.ejb.facade.UserFacade;
 import java.io.IOException;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.codec.digest.DigestUtils;
 
-public class LoginServlet extends HttpServlet {
+public class EditProfileServlet extends HttpServlet {
 
-    @EJB
-    private UserFacade userFacade;
-    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -32,7 +24,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.getWriter().println("login get");
+        response.getWriter().println("edit profile get");
     }
 
     /**
@@ -46,18 +38,6 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
-        String passwordCrypted = DigestUtils.sha256Hex(
-                request.getParameter("password"));
-        
-        UserEntity user = userFacade.findByUsername(username);
-        if(user != null && user.getPassword().equals(passwordCrypted)){
-            response.addCookie(new Cookie("sb_token", DigestUtils.sha256Hex(username)));
-            response.addCookie(new Cookie("sb_username", username));
-            response.sendRedirect("home");
-        } else {
-            response.sendRedirect("login");
-        }
     }
 
     /**
@@ -67,7 +47,7 @@ public class LoginServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Login servlet";
+        return "Short description";
     }
 
 }
