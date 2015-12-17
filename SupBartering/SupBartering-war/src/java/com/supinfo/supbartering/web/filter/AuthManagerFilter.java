@@ -6,6 +6,7 @@
 package com.supinfo.supbartering.web.filter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.servlet.Filter;
@@ -34,7 +35,13 @@ public class AuthManagerFilter implements Filter {
         // TODO Auto-generated method stub
         // place your code here
         HttpServletRequest req = (HttpServletRequest) request;
-        List<Cookie> cookies = Arrays.asList(req.getCookies());
+        List<Cookie> cookies;
+        if(req.getCookies() != null){
+            cookies = Arrays.asList(req.getCookies());
+        } else {
+            cookies = new ArrayList<>();
+        }
+        
         boolean validCredentials = false;
         String username = "";
         String token = "";

@@ -6,6 +6,7 @@
 package com.supinfo.supbartering.web.filter;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import javax.servlet.Filter;
@@ -30,7 +31,13 @@ public class AuthCheckerFilter implements Filter {
 
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        List<Cookie> cookies = Arrays.asList(req.getCookies());
+        List<Cookie> cookies;
+        if(req.getCookies() != null){
+            cookies = Arrays.asList(req.getCookies());
+        } else {
+            cookies = new ArrayList<>();
+        }
+        
         boolean validCredentials = false;
         String username = "";
         String token = "";
