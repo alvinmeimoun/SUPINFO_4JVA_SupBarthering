@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.supinfo.supbatering.ejb;
+package com.supinfo.supbartering.web.ejb;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Singleton;

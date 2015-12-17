@@ -24,30 +24,21 @@ public class UserEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    
     private Long id;
     
-    @NotNull
-    @Column(nullable=false)
     private String firstName;
     
-    @NotNull
-    @Column(nullable=false)
     private String lastName;
     
-    @NotNull
-    @Column(nullable=false)
     private String email;
     
-    @NotNull
-    @Column(nullable=false)
     private String userName;
     
-    @NotNull
-    @Column(nullable=false)
     private String password;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -56,6 +47,8 @@ public class UserEntity implements Serializable {
         this.id = id;
     }
 
+    @NotNull
+    @Column(name = "FIRSTNAME", nullable=false)
     public String getFirstName() {
         return firstName;
     }
@@ -64,6 +57,8 @@ public class UserEntity implements Serializable {
         this.firstName = firstName;
     }
 
+    @NotNull
+    @Column(name = "LASTNAME", nullable=false)
     public String getLastName() {
         return lastName;
     }
@@ -72,6 +67,8 @@ public class UserEntity implements Serializable {
         this.lastName = lastName;
     }
 
+    @NotNull
+    @Column(name = "EMAIL", nullable=false)
     public String getEmail() {
         return email;
     }
@@ -80,6 +77,8 @@ public class UserEntity implements Serializable {
         this.email = email;
     }
 
+    @NotNull
+    @Column(name = "USERNAME", nullable=false)
     public String getUserName() {
         return userName;
     }
@@ -88,6 +87,8 @@ public class UserEntity implements Serializable {
         this.userName = userName;
     }
 
+    @NotNull
+    @Column(name = "PASSWORD", nullable=false)
     public String getPassword() {
         return password;
     }

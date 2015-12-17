@@ -15,7 +15,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 @Stateless
-public class UserEntityFacade {
+public class UserFacade {
     @PersistenceContext(unitName = "SupBartering-ejbPU")
     private EntityManager em;
 
@@ -31,7 +31,7 @@ public class UserEntityFacade {
         em.remove(em.merge(userEntity));
     }
 
-    public UserEntity find(Object id) {
+    public UserEntity find(Long id) {
         return em.find(UserEntity.class, id);
     }
 
