@@ -78,7 +78,7 @@ public class UserEntity implements Serializable {
     }
 
     @NotNull
-    @Column(name = "USERNAME", nullable=false)
+    @Column(name = "USERNAME", nullable=false, unique = true)
     public String getUserName() {
         return userName;
     }

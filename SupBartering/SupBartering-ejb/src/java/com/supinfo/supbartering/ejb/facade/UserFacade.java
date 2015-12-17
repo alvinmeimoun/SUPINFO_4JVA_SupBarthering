@@ -6,11 +6,14 @@
 package com.supinfo.supbartering.ejb.facade;
 
 import com.supinfo.supbartering.ejb.entity.UserEntity;
+import com.supinfo.supbartering.ejb.entity.UserEntity_;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
@@ -33,6 +36,20 @@ public class UserFacade {
 
     public UserEntity find(Long id) {
         return em.find(UserEntity.class, id);
+    }
+    
+    public UserEntity findByUsername(String username) throws NoResultException{
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<UserEntity> criteriaQuery = criteriaBuilder.createQuery(UserEntity.class);
+        Root<UserEntity> user = criteriaQuery.from(UserEntity.class);
+        
+        criteriaQuery.where(criteriaBuilder.equal(user.get(UserEntity_.userName), username));
+        
+        try{
+            return em.createQuery(criteriaQuery).getSingleResult();
+        } catch (NoResultException nre){
+            return null;
+        }
     }
 
     public List<UserEntity> findAll() {
