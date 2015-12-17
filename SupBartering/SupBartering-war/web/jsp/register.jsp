@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Register
-    Created on : Dec 17, 2015, 2:41:16 PM
-    Author     : Naruara
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
