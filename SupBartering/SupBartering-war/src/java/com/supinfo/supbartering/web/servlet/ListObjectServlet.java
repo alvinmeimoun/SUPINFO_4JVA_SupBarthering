@@ -5,8 +5,14 @@
  */
 package com.supinfo.supbartering.web.servlet;
 
+import com.supinfo.supbartering.ejb.entity.ObjectEntity;
+import com.supinfo.supbartering.ejb.entity.UserEntity;
+import com.supinfo.supbartering.ejb.facade.ObjectFacade;
+import com.supinfo.supbartering.ejb.facade.UserFacade;
+import com.supinfo.supbartering.web.utils.UserAuthenticationUtils;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -18,31 +24,36 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ListObjectServlet extends HttpServlet {
 
+    @EJB
+    private ObjectFacade objectFacade;
     
+    @EJB
+    private UserFacade userFacade;
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+   
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        List<ObjectEntity> listObjects;
+        UserEntity userEntity = userFacade.findByUsername(UserAuthenticationUtils.GetConnectedUser(request));
+        
+        if(userEntity.getId() != null)
+        {
+            listObjects = objectFacade.findAllByUser(userEntity);
+            request.setAttribute("objects", listObjects);
+            request.setAttribute("user", userEntity);
+            request.getRequestDispatcher("/jsp/listObjects.jsp").forward(request, response);
+            
+        }
+        else 
+        {
+            listObjects = objectFacade.findAll();
+            request.setAttribute("objects", listObjects);
+            request.getRequestDispatcher("/jsp/listObjects.jsp").forward(request, response);
+        }
         
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

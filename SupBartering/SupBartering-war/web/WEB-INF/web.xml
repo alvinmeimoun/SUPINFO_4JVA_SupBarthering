@@ -3,10 +3,13 @@
     <welcome-file-list>
         <welcome-file>home</welcome-file>
     </welcome-file-list>
-    
     <servlet>
         <servlet-name>ListObjectServlet</servlet-name>
         <servlet-class>com.supinfo.supbartering.web.servlet.ListObjectServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteObjectServlet</servlet-name>
+        <servlet-class>com.supinfo.supbartering.web.servlet.DeleteObjectServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -35,6 +38,10 @@
     <servlet-mapping>
         <servlet-name>ListObjectServlet</servlet-name>
         <url-pattern>/ListObjects</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteObjectServlet</servlet-name>
+        <url-pattern>/DeleteObject</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
