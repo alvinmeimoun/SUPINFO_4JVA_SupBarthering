@@ -38,6 +38,13 @@ public class EditProfileServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.getWriter().println("edit profile get");
+        
+        String cookieUsername = UserAuthenticationUtils.GetConnectedUser(request);
+        UserEntity user = userFacade.findByUsername(cookieUsername);
+        
+        request.setAttribute("email", user.getEmail());
+        request.setAttribute("firstname", user.getFirstName());
+        request.setAttribute("lastname", user.getLastName());
     }
 
     /**
@@ -52,7 +59,6 @@ public class EditProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String cookieUsername = UserAuthenticationUtils.GetConnectedUser(request);
-        
         UserEntity user = userFacade.findByUsername(cookieUsername);
         
         user.setEmail(request.getParameter("email"));
