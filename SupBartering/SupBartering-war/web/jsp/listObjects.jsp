@@ -42,7 +42,7 @@
                         <c:forEach items="${objects}" var="object">
                         <tr>
                            <c:url value="/deleteObject?id=${object.id}" var="deleteUrl" />
-                           <td><img src="<c:out value="${object.pictureUrl}" />.jpg"</td>
+                           <td><img src="<c:out value="${object.pictureFullUrl}" />"</td>
                             <td><c:out value="${object.title}" /></td>
                             <td><c:out value="${object.description}" /></td>
                             <td><c:out value="${object.type.typeName}" /></td>

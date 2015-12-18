@@ -5,6 +5,7 @@
  */
 package com.supinfo.supbartering.ejb.entity;
 
+import com.supinfo.supbartering.ejb.config.ServerConfig;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import javax.persistence.Column;
@@ -147,4 +148,7 @@ public class ObjectEntity implements Serializable{
         this.type = type;
     }
     
+    public String getPictureFullUrl(){
+        return ServerConfig.BASE_URL + "/getObjectImage?filename=" + pictureUrl;
+    }
 }
