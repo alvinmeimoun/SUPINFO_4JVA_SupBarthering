@@ -11,7 +11,6 @@ import com.supinfo.supbartering.ejb.entity.UserEntity;
 import com.supinfo.supbartering.ejb.facade.ObjectFacade;
 import com.supinfo.supbartering.ejb.facade.TypeFacade;
 import com.supinfo.supbartering.ejb.facade.UserFacade;
-import com.supinfo.supbartering.web.utils.UserAuthenticationUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,14 +58,15 @@ public class AddObjectServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
-        String username = UserAuthenticationUtils.GetConnectedUser(request);
+        String username = (String) request.getAttribute("username");
         
-        final Long timestamp = System.currentTimeMillis();
-        File file = new File(System.getProperty("user.home") + "/SupBartering/Picture/" + timestamp);
-        file.getParentFile().mkdirs();
         Part filePart = request.getPart("file"); 
-        //String fileName = filePart.getSubmittedFileName();
-        //InputStream fileContent = filePart.getInputStream();
+        String filename = String.valueOf(System.currentTimeMillis())
+                + filePart.getSubmittedFileName()
+                        .substring(filePart.getSubmittedFileName().lastIndexOf('.'));
+        
+        File file = new File(System.getProperty("user.home") + "/SupBartering/Picture/" + filename);
+        file.getParentFile().mkdirs();
         
         try (InputStream input = filePart.getInputStream()) 
         {
@@ -83,7 +83,7 @@ public class AddObjectServlet extends HttpServlet {
             objectEntity.setDescription(request.getParameter("description"));
             objectEntity.setPrice(new BigDecimal(request.getParameter("price")));
             objectEntity.setUser(userEntity);
-            objectEntity.setPictureUrl(String.valueOf(timestamp));
+            objectEntity.setPictureUrl(filename);
             
             Long TypeId = Long.valueOf(request.getParameter("type"));
             if(TypeId != null)
@@ -92,7 +92,7 @@ public class AddObjectServlet extends HttpServlet {
                objectEntity.setType(typeEntity);
                objectFacade.create(objectEntity);
                
-               response.sendRedirect(getServletContext().getContextPath() + "/ListObjects");
+               response.sendRedirect(getServletContext().getContextPath() + "/listObjects");
             }
             else
             {

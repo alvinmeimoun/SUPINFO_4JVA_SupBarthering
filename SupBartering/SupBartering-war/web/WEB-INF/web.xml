@@ -12,6 +12,10 @@
         <servlet-class>com.supinfo.supbartering.web.servlet.DeleteObjectServlet</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>GetObjectImage</servlet-name>
+        <servlet-class>com.supinfo.supbartering.web.servlet.GetObjectImage</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>DetailsObjectServlet</servlet-name>
         <servlet-class>com.supinfo.supbartering.web.servlet.DetailsObjectServlet</servlet-class>
     </servlet>
@@ -41,11 +45,15 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListObjectServlet</servlet-name>
-        <url-pattern>/ListObjects</url-pattern>
+        <url-pattern>/listObjects</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteObjectServlet</servlet-name>
-        <url-pattern>/DeleteObject</url-pattern>
+        <url-pattern>/deleteObject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetObjectImage</servlet-name>
+        <url-pattern>/getObjectImage</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DetailsObjectServlet</servlet-name>

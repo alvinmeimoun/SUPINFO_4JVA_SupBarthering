@@ -31,12 +31,12 @@ public class DeleteObjectServlet extends HttpServlet {
         boolean isDelete = objectFacade.removeById(objectId);
         if (isDelete)
         {
-           request.getRequestDispatcher("/ListObjects").forward(request, response);
+           request.getRequestDispatcher("/listObjects").forward(request, response);
         }
         else 
         {
             request.setAttribute("error", "une erreur est survenue lors de la suppression");
-            request.getRequestDispatcher("/ListObjects").forward(request, response);
+            request.getRequestDispatcher("/listObjects").forward(request, response);
         }
         
     }

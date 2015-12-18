@@ -9,7 +9,6 @@ import com.supinfo.supbartering.ejb.entity.ObjectEntity;
 import com.supinfo.supbartering.ejb.entity.UserEntity;
 import com.supinfo.supbartering.ejb.facade.ObjectFacade;
 import com.supinfo.supbartering.ejb.facade.UserFacade;
-import com.supinfo.supbartering.web.utils.UserAuthenticationUtils;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.EJB;
@@ -35,7 +34,8 @@ public class ListObjectServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         List<ObjectEntity> listObjects;
-        UserEntity userEntity = userFacade.findByUsername(UserAuthenticationUtils.GetConnectedUser(request));
+        String username = (String) request.getAttribute("username");
+        UserEntity userEntity = userFacade.findByUsername(username);
         
         if(userEntity.getId() != null)
         {

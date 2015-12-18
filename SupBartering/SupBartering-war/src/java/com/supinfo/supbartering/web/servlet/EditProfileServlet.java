@@ -8,7 +8,6 @@ package com.supinfo.supbartering.web.servlet;
 import com.supinfo.supbartering.ejb.business.UserManager;
 import com.supinfo.supbartering.ejb.entity.UserEntity;
 import com.supinfo.supbartering.ejb.facade.UserFacade;
-import com.supinfo.supbartering.web.utils.UserAuthenticationUtils;
 import java.io.IOException;
 import javax.ejb.EJB;
 import javax.servlet.RequestDispatcher;
@@ -39,7 +38,7 @@ public class EditProfileServlet extends HttpServlet {
             throws ServletException, IOException {
         response.getWriter().println("edit profile get");
         
-        String cookieUsername = UserAuthenticationUtils.GetConnectedUser(request);
+        String cookieUsername = (String) request.getAttribute("username");
         UserEntity user = userFacade.findByUsername(cookieUsername);
         
         request.setAttribute("email", user.getEmail());
@@ -58,7 +57,7 @@ public class EditProfileServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String cookieUsername = UserAuthenticationUtils.GetConnectedUser(request);
+        String cookieUsername = (String) request.getAttribute("username");
         UserEntity user = userFacade.findByUsername(cookieUsername);
         
         user.setEmail(request.getParameter("email"));
