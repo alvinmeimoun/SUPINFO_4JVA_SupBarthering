@@ -31,6 +31,7 @@
                         <th>Photo</th>
                         <th>Titre</th>
                         <th>Description</th>
+                        <th>Type</th>
                         <th>Prix</th>
                         <c:if test="${not empty user}">
                             <th>Action</th>
@@ -41,7 +42,7 @@
                         <c:forEach items="${objects}" var="object">
                         <tr>
                            <c:url value="/DeleteObject?id=${object.id}" var="deleteUrl" />
-
+                           <td><img src="<c:out value="${object.pictureUrl}" />.jpg"</td>
                             <td><c:out value="${object.title}" /></td>
                             <td><c:out value="${object.description}" /></td>
                             <td><c:out value="${object.type.typeName}" /></td>
