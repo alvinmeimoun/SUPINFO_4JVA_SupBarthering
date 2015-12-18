@@ -17,6 +17,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import static javax.persistence.TemporalType.DATE;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -48,6 +50,7 @@ public class ObjectEntity implements Serializable{
     @Column(nullable=false)
     private BigDecimal price;
     
+    @Temporal(DATE)
     @NotNull
     @Column(nullable=false)
     private Date dateSubmit;
