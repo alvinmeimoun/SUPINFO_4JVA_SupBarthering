@@ -60,12 +60,14 @@ public class AddObjectServlet extends HttpServlet {
        
         String username = (String) request.getAttribute("username");
         
-        final Long timestamp = System.currentTimeMillis();
-        File file = new File(System.getProperty("user.home") + "/SupBartering/Picture/" + timestamp);
-        file.getParentFile().mkdirs();
         Part filePart = request.getPart("file"); 
-        //String fileName = filePart.getSubmittedFileName();
-        //InputStream fileContent = filePart.getInputStream();
+        System.out.println("aa" +filePart.getSubmittedFileName());
+        String filename = String.valueOf(System.currentTimeMillis())
+                + filePart.getSubmittedFileName()
+                        .substring(filePart.getSubmittedFileName().lastIndexOf('.'));
+        
+        File file = new File(System.getProperty("user.home") + "/SupBartering/Picture/" + filename);
+        file.getParentFile().mkdirs();
         
         try (InputStream input = filePart.getInputStream()) 
         {
@@ -82,7 +84,7 @@ public class AddObjectServlet extends HttpServlet {
             objectEntity.setDescription(request.getParameter("description"));
             objectEntity.setPrice(new BigDecimal(request.getParameter("price")));
             objectEntity.setUser(userEntity);
-            objectEntity.setPictureUrl(String.valueOf(timestamp));
+            objectEntity.setPictureUrl(filename);
             
             Long TypeId = Long.valueOf(request.getParameter("type"));
             if(TypeId != null)
