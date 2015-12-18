@@ -37,7 +37,19 @@ public class ObjectFacade {
     public void remove(ObjectEntity objectEntity) {
         em.remove(em.merge(objectEntity));
     }
-
+    
+    public boolean removeById(Long id){
+        try
+        {
+         em.remove(find(id));
+         return true;
+        }
+        catch(Exception e)
+        {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
     public ObjectEntity find(Long id) {
         return em.find(ObjectEntity.class, id);
     }
