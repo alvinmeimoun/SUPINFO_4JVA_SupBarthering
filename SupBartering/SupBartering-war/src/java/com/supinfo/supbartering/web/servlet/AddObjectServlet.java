@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.nio.file.Files;
+import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
@@ -84,6 +85,8 @@ public class AddObjectServlet extends HttpServlet {
             objectEntity.setPrice(new BigDecimal(request.getParameter("price")));
             objectEntity.setUser(userEntity);
             objectEntity.setPictureUrl(filename);
+            objectEntity.setDateSubmit(new Date(System.currentTimeMillis()));
+            
             
             Long TypeId = Long.valueOf(request.getParameter("type"));
             if(TypeId != null)

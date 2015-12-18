@@ -156,4 +156,18 @@ public class ObjectEntity implements Serializable{
     public String getPictureFullUrl(){
         return ServerConfig.BASE_URL + "/getObjectImage?filename=" + pictureUrl;
     }
+
+    /**
+     * @return the dateSubmit
+     */
+    public Date getDateSubmit() {
+        return dateSubmit;
+    }
+
+    /**
+     * @param dateSubmit the dateSubmit to set
+     */
+    public void setDateSubmit(Date dateSubmit) {
+        this.dateSubmit = dateSubmit;
+    }
 }
