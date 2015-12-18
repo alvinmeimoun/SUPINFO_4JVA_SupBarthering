@@ -19,7 +19,7 @@ public abstract class UserAuthenticationUtils {
     {
         List<Cookie> cookies = new ArrayList<>();
          
-        if (request.getParameter("isAuthenticated").equals("true"))
+        if (request.getAttribute("isAuthenticated").equals("true"))
         {
             if(request.getCookies() != null){
             cookies = Arrays.asList(request.getCookies());
