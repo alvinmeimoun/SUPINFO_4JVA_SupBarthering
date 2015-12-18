@@ -61,7 +61,6 @@ public class AddObjectServlet extends HttpServlet {
         String username = (String) request.getAttribute("username");
         
         Part filePart = request.getPart("file"); 
-        System.out.println("aa" +filePart.getSubmittedFileName());
         String filename = String.valueOf(System.currentTimeMillis())
                 + filePart.getSubmittedFileName()
                         .substring(filePart.getSubmittedFileName().lastIndexOf('.'));
