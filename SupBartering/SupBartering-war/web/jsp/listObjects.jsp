@@ -21,6 +21,9 @@
         </style>
     </head>
     <body>
+         <header>
+            <jsp:include page="../jspf/header.jspf" />
+        </header>
       <c:choose>
             <c:when test="${not empty objects}">
                 <table>
@@ -66,5 +69,9 @@
             <c:url value="/AddObject" var="addObjectUrl" />
             <a href="${addObjectUrl}">Ajouter un objet</a>
         </c:if>
+            
+        <footer>
+            <jsp:include page="../jspf/footer.jspf" />
+        </footer>
     </body>
 </html>
