@@ -11,6 +11,10 @@
         <servlet-name>DeleteObjectServlet</servlet-name>
         <servlet-class>com.supinfo.supbartering.web.servlet.DeleteObjectServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailsObjectServlet</servlet-name>
+        <servlet-class>com.supinfo.supbartering.web.servlet.DetailsObjectServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
@@ -42,6 +46,10 @@
     <servlet-mapping>
         <servlet-name>DeleteObjectServlet</servlet-name>
         <url-pattern>/DeleteObject</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailsObjectServlet</servlet-name>
+        <url-pattern>/DetailsObject</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

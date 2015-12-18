@@ -8,6 +8,7 @@ package com.supinfo.supbartering.ejb.entity.metamodel;
 import com.supinfo.supbartering.ejb.entity.TypeEntity;
 import com.supinfo.supbartering.ejb.entity.UserEntity;
 import java.math.BigDecimal;
+import java.util.Date;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
@@ -20,6 +21,7 @@ public class ObjectEntity_ {
     public static volatile SingularAttribute<ObjectEntity_, String> description;
     public static volatile SingularAttribute<ObjectEntity_, String> pictureUrl;
     public static volatile SingularAttribute<ObjectEntity_, BigDecimal> price;
+    public static volatile SingularAttribute<ObjectEntity_, Date> dateSubmit;
     public static volatile SingularAttribute<ObjectEntity_, UserEntity> user;
     public static volatile SingularAttribute<ObjectEntity_, TypeEntity> type;
 }

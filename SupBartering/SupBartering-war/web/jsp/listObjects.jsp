@@ -42,7 +42,7 @@
                         <c:forEach items="${objects}" var="object">
                         <tr>
                            <c:url value="/DeleteObject?id=${object.id}" var="deleteUrl" />
-                           <td><img src="<c:out value="${object.pictureUrl}" />.jpg"</td>
+                           <td><img src="<c:out value="${object.pictureUrl}" />"</td>
                             <td><c:out value="${object.title}" /></td>
                             <td><c:out value="${object.description}" /></td>
                             <td><c:out value="${object.type.typeName}" /></td>
@@ -53,7 +53,7 @@
                                 </td>
                             </c:if>
                             <td> 
-                            <c:url value="/ViewDetailsObject?id=${object.id}" var="detailsUrl" />
+                            <c:url value="/DetailsObject?id=${object.id}" var="detailsUrl" />
                             <a href="${detailsUrl}">Voir les détails</a>
                             </td>
                         </tr>

@@ -7,6 +7,7 @@ package com.supinfo.supbartering.ejb.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -45,6 +46,10 @@ public class ObjectEntity implements Serializable{
     @NotNull
     @Column(nullable=false)
     private BigDecimal price;
+    
+    @NotNull
+    @Column(nullable=false)
+    private Date dateSubmit;
     
     @ManyToOne @JoinColumn
     private UserEntity user;
