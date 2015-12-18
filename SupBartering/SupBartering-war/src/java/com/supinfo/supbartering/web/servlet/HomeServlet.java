@@ -24,8 +24,7 @@ public class HomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.getWriter().println("home get");
-        response.getWriter().println("logged "+request.getAttribute("isAuthenticated"));
+        request.getRequestDispatcher("jsp/home.jsp").forward(request, response);
     }
 
     /**
