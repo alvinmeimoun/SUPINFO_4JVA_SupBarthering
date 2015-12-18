@@ -58,11 +58,14 @@ public class AuthManagerFilter implements Filter {
         if(username != null && username.length() > 0 
                 && DigestUtils.sha256Hex(username).equals(token)){
             validCredentials = true;
+        } else {
+            username = "";
         }
         
         
         ((HttpServletRequest)request).setAttribute("isAuthenticated", 
                 String.valueOf(validCredentials));
+        ((HttpServletRequest)request).setAttribute("username", username);
         
         chain.doFilter(request, response);
     }

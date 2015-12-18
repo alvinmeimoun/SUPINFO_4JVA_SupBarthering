@@ -37,11 +37,11 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ListObjectServlet</servlet-name>
-        <url-pattern>/ListObjects</url-pattern>
+        <url-pattern>/listObjects</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteObjectServlet</servlet-name>
-        <url-pattern>/DeleteObject</url-pattern>
+        <url-pattern>/deleteObject</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

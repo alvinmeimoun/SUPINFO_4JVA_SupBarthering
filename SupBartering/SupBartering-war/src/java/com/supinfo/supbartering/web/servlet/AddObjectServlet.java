@@ -11,7 +11,6 @@ import com.supinfo.supbartering.ejb.entity.UserEntity;
 import com.supinfo.supbartering.ejb.facade.ObjectFacade;
 import com.supinfo.supbartering.ejb.facade.TypeFacade;
 import com.supinfo.supbartering.ejb.facade.UserFacade;
-import com.supinfo.supbartering.web.utils.UserAuthenticationUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,7 +58,7 @@ public class AddObjectServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
-        String username = UserAuthenticationUtils.GetConnectedUser(request);
+        String username = (String) request.getAttribute("username");
         
         final Long timestamp = System.currentTimeMillis();
         File file = new File(System.getProperty("user.home") + "/SupBartering/Picture/" + timestamp);
@@ -92,7 +91,7 @@ public class AddObjectServlet extends HttpServlet {
                objectEntity.setType(typeEntity);
                objectFacade.create(objectEntity);
                
-               response.sendRedirect(getServletContext().getContextPath() + "/ListObjects");
+               response.sendRedirect(getServletContext().getContextPath() + "/listObjects");
             }
             else
             {
